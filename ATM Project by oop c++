@@ -1,0 +1,103 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+class Account
+{
+  public :
+      double balance;
+      int id;
+
+  Account(void);
+  Account( int a,double b);
+
+  void getdata()
+  {
+      cout<<"Enter ID"<<endl;
+      cin>>id;
+      cout<<"Enter Balance"<<endl;
+       cin>>balance;
+  }
+  void showdata()
+  {
+      cout<<"ID ="<<id<<endl;
+      cout<<"Balance ="<<balance<<endl;
+  }
+
+  void withdraw (double amount)
+  {
+      if(amount>balance)
+      {
+          cout<< "\n you have only" << balance << "without not possible";
+      }
+    balance=balance-amount;
+  }
+  void deposit (double amount)
+  {
+      balance=balance+amount;
+  }
+
+};
+ Account::Account(void)
+{
+    id=0;
+    balance=0;
+}
+Account::Account(int a,double b)
+{
+    id=a;
+    balance=b;
+}
+
+
+int main()
+{
+
+
+   cout<< " welcome to Dip`s ATM !" <<endl;
+   Account obj (1,100);
+   obj.showdata();
+   int choice;
+   double amt;
+
+   do
+   {
+      cout<< "\n Enter you choice: \n1.Withdraw money: \n2.Deposit money: \n3.create new acc: \n ";
+      cin>>choice;
+      switch(choice)
+
+              {
+                  case 1: cout<<"Enter amount to withdraw"<<endl;
+                          cin>>amt;
+                          obj.withdraw(amt);
+                          obj.showdata();
+                  break;
+
+                  case 2: cout<<"Enter amount to deposit"<<endl;
+                          cin>>amt;
+                          obj.deposit(amt);
+                          obj.showdata();
+                  break;
+
+                  case 3: obj.getdata();
+                          cout<<"New account successfully created"<<endl;
+                  break;
+
+                  case 4: cout<<"Exit program"<<endl;
+                  break;
+
+                  default:
+                           cout<<"invlid choice! select a valid option"<<endl;
+
+              }
+
+
+
+
+
+   }
+     while(choice!=4);
+
+     getch();
+    return 0;
+}
